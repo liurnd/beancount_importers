@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+"""Example import configuration."""
+
+# Insert our custom importers path here.
+# (In practice you might just change your PYTHONPATH environment.)
+import sys
+from os import path
+from beancount.ingest import extract
+
+sys.path.insert(0, path.join(path.dirname(__file__)))
+
+from importers.ocbc import ocbc_csv
+
+# Setting this variable provides a list of importer instances.
+CONFIG = [
+    ocbc_csv.Importer("Assets:Bank:Ocbc1228"),
+]
+
+
+# Override the header on extracted text (if desired).
+extract.HEADER = ';; -*- mode: org; mode: beancount; coding: utf-8; -*-\n'
