@@ -185,7 +185,7 @@ class Importer(importer.ImporterProtocol):
     def name(self):
         return "OCBC CSV Importer"
     def identify(self, file):
-        return True
+        return re.match(r'.*TransactionHistory_.*csv', file.name) != None
 
     def extract(self, file):
         ledger_txns = []

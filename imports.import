@@ -10,10 +10,14 @@ from beancount.ingest import extract
 sys.path.insert(0, path.join(path.dirname(__file__)))
 
 from importers.ocbc import ocbc_csv
+from importers.cmb import cmb_txt
 
 # Setting this variable provides a list of importer instances.
 CONFIG = [
     ocbc_csv.Importer("Assets:Bank:Ocbc1228"),
+    cmb_txt.Importer({"0933":"Liabilities:Bank:Cmb0933",
+                      "4804":"Liabilities:Bank:Cmb4804",
+                      }, "Liabilities:Bank:Cmb0933", 2020)
 ]
 
 
