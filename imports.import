@@ -15,11 +15,16 @@ from importers.cmb import cmb_txt
 # Setting this variable provides a list of importer instances.
 CONFIG = [
     ocbc_csv.Importer("Assets:Bank:Ocbc1228"),
-    cmb_txt.Importer({"0933":"Liabilities:Bank:Cmb0933",
-                      "4804":"Liabilities:Bank:Cmb4804",
-                      }, "Liabilities:Bank:Cmb0933", 2020)
+    cmb_txt.Importer(
+        {
+            "0933": "Liabilities:Bank:Cmb0933",
+            "4804": "Liabilities:Bank:Cmb4804",
+        },
+        "Liabilities:Bank:Cmb0933",
+        2020,
+    ),
 ]
 
 
 # Override the header on extracted text (if desired).
-extract.HEADER = ';; -*- mode: org; mode: beancount; coding: utf-8; -*-\n'
+extract.HEADER = ";; -*- mode: org; mode: beancount; coding: utf-8; -*-\n"
